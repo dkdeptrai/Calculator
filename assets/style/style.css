@@ -15,6 +15,10 @@
 }
 
 .screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 90%;
     height: 160px;
     align-self: center;
@@ -22,6 +26,20 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 2%;
+    align-content: flex-end;
+    overflow-wrap: break-word;
+
+}
+
+.screen-top {
+    height: 25%;
+    width: 95%;
+}
+
+.screen-bottom {
+    height: 65%;
+    width: 95%;
+    font-size: 24px;
 }
 
 .number-pad {
@@ -45,7 +63,7 @@
     grid-column: 3 / span 2;
 }
 
-button {
+.btn {
     width: 100%;
     height: auto;
     border: 1px solid black;
@@ -55,4 +73,8 @@ button {
     font-weight: bold;
     text-align: center;
     color: black;
+}
+.btn:hover {
+    background-color:lightgrey;
+    border: 2px solid black;
 }
