@@ -17,10 +17,11 @@
 .screen {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 90%;
-    height: 160px;
+    height: auto;
+    min-height: 160px;
     align-self: center;
     margin-top: 24px;
     background-color: white;
@@ -28,18 +29,20 @@
     border-radius: 2%;
     align-content: flex-end;
     overflow-wrap: break-word;
-
+    font-family: sans-serif;
 }
 
 .screen-top {
     height: 25%;
     width: 95%;
+    margin-top: 10px;
+    font-size: 24px;
 }
 
 .screen-bottom {
     height: 65%;
     width: 95%;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 .number-pad {
@@ -73,6 +76,10 @@
     font-weight: bold;
     text-align: center;
     color: black;
+}
+
+.operator {
+    background-color: pink;
 }
 .btn:hover {
     background-color:lightgrey;
