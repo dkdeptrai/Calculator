@@ -77,6 +77,31 @@ function operatorProcessing(btn) {
     }
 }
 
+function keyboardOperatorProcessing(e) {
+    let operator = e.key;
+    if(currentOperator === undefined) {
+        currentOperator = operator;
+        savedNumber = displayedNumber;
+        subScreen.textContent = savedNumber + ' ' + operator;
+        mainScreen.textContent = '';
+    } else {
+        if(operator != '=') {
+            savedNumber = doCalculation(currentOperator, savedNumber, displayedNumber);
+            currentOperator = operator;
+            subScreen.textContent = savedNumber + ' ' + operator;
+            mainScreen.textContent = '';
+            shouldReset = false;
+        } else {
+            subScreen.textContent = savedNumber + ' ' + currentOperator + ' ' + displayedNumber;
+            displayedNumber = doCalculation(currentOperator, savedNumber, displayedNumber);
+            currentOperator = operator;
+            subScreen.textContent += ' = ' + displayedNumber;
+            savedNumber = displayedNumber;
+            mainScreen.textContent = displayedNumber;
+            shouldReset = true;
+        }
+    }
+}
 const numberBtns = document.querySelectorAll('.number');
 const operatorBtns = document.querySelectorAll('.operator');
 const clearBtn = document.querySelector('.clear-btn');
@@ -105,8 +130,15 @@ operatorBtns.forEach(btn => {
     btn.addEventListener('click', () => operatorProcessing(btn));
 })
 
-document.addEventListener('keydown', e => {
-    if (Number.isInteger(parseInt(e.key))) {
-        mainScreen.textContent += e.key;
-    }
-})
+// document.addEventListener('keydown', e => {
+//     if (Number.isInteger(parseInt(e.key))) {
+//         mainScreen.textContent += e.key;
+//     }
+//     if ((e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/') && e.key != 'Shift') {
+//         keyboardOperatorProcessing(e);
+//     }
+// })
+
+// document.addEventListener('keydown', e => {
+//         console.log(e);
+// })
